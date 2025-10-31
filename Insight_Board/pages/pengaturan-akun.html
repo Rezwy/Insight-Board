@@ -1,0 +1,110 @@
+<section class="settings-section">
+    <h2>⚙️ Pengaturan Akun</h2>
+    <p class="settings-subtitle">Atur profil, keamanan, dan preferensi tampilanmu di sini.</p>
+
+    <!-- Profile Pengguna -->
+    <div class="settings-card">
+        <h3>👤 Profil Pengguna</h3>
+        <form id="form-profile">
+            <div class="form-group">
+                <label for="nama">Nama Lengkap</label>
+                <input type="text" id="nama" placeholder="Masukkan nama lengkapmu" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="contoh@gmail.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" value="kamu123" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="avatar">Foto Profil</label>
+                <input type="file" id="avatar" accept="image/*">
+            </div>
+
+            <button type="submit" class="btn-primary">Simpan Perubahan</button>
+        </form>
+    </div>
+
+    <!-- Keamanan Akun -->
+     <div class="settings-card">
+        <h3>🔒 Keamanan Akun</h3>
+        <form id="form-password">
+            <div class="form-group">
+                <label for="old-pass">Password Lama</label>
+                <input type="password" id="old-pass" required>
+            </div>
+            <div class="form-group">
+                <label for="new-pass">Password Baru</label>
+                <input type="password" id="new-pass" minlength="6" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-pass">Konfirmasi Password</label>
+                <input type="password" id="confirm-pass" required>
+            </div>
+
+            <button type="submit" class="btn-primary">Ganti Password</button>
+        </form>
+     </div>
+
+     <!-- Preferensi Tampilan -->
+      <div class="settings-card">
+        <h3>🎨 Preferensi Tampilan</h3>
+        <div class="theme-toggle">
+            <label>
+                <input type="radio" name="theme" value="light" checked> Terang
+            </label>
+            <label>
+                <input type="radio" name="theme" value="dark" checked> Gelap
+            </label>
+        </div>
+      </div>
+</section>
+
+<script>
+ // 🔧 Simulasi perubahan profil
+  document.getElementById("form-profile").addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert("✅ Profil berhasil diperbarui!");
+  });
+
+  // 🔒 Ganti password dengan validasi sederhana
+  document.getElementById("form-password").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const oldPass = document.getElementById("old-pass").value;
+    const newPass = document.getElementById("new-pass").value;
+    const confirm = document.getElementById("confirm-pass").value;
+
+    if (newPass !== confirm) {
+      alert("⚠️ Password baru dan konfirmasi tidak cocok!");
+      return;
+    }
+    if (newPass.length < 6) {
+      alert("⚠️ Password baru minimal 6 karakter!");
+      return;
+    }
+
+    alert("🔐 Password berhasil diubah!");
+    e.target.reset();
+  });
+
+  // 🎨 Simpan preferensi tema ke localStorage
+  document.querySelectorAll('input[name="theme"]').forEach((input) => {
+    input.addEventListener("change", (e) => {
+      const theme = e.target.value;
+      localStorage.setItem("theme", theme);
+      document.body.dataset.theme = theme;
+    });
+  });
+
+  // Terapkan tema tersimpan
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) {
+    document.body.dataset.theme = savedTheme;
+    document.querySelector(`input[value="${savedTheme}"]`).checked = true;
+  }
+</script>

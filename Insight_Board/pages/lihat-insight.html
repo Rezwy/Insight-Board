@@ -1,0 +1,107 @@
+<section class="insight-section">
+  <h2>Lihat Insight Aktivitasmu</h2>
+
+  <!-- Filter -->
+  <div class="filter-section">
+    <label>Rentang Waktu:</label>
+    <select id="filterRange">
+      <option value="minggu-ini">Minggu Ini</option>
+      <option value="bulan-ini">Bulan Ini</option>
+    </select>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="insight-cards">
+    <div class="card blue">
+      <h3>Total Aktivitas</h3>
+      <p>15 Aktivitas</p>
+    </div>
+    <div class="card green">
+      <h3>Durasi Rata-rata</h3>
+      <p>2 jam/hari</p>
+    </div>
+    <div class="card yellow">
+      <h3>Kategori Teraktif</h3>
+      <p>Belajar</p>
+    </div>
+    <div class="card red">
+      <h3>Waktu Tersibuk</h3>
+      <p>19.00–22.00</p>
+    </div>
+  </div>
+
+  <!-- Chart Area -->
+  <div class="chart-area">
+    <h3>Aktivitas per Kategori</h3>
+    <canvas id="barChart"></canvas>
+  </div>
+
+  <div class="chart-area">
+    <h3>Tren Aktivitas Harian</h3>
+    <canvas id="lineChart"></canvas>
+  </div>
+
+  <p class="insight-text">
+    💡 Aktivitas terbanyak bulan ini adalah <b>Belajar</b> dengan total 40 jam.
+  </p>
+</section>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Bar Chart
+  const ctx1 = document.getElementById("barChart");
+  new Chart(ctx1, {
+    type: "bar",
+    data: {
+      labels: ["Belajar", "Olahraga", "Proyek", "Hiburan", "Istirahat"],
+      datasets: [
+        {
+          label: "Durasi (jam)",
+          data: [10, 5, 7, 3, 4],
+          backgroundColor: ["#1B9CFC", "#27AE60", "#F1C40F", "#E74C3C", "#8E44AD"],
+          borderRadius: 8
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+
+  // Line Chart
+  const ctx2 = document.getElementById("lineChart");
+  new Chart(ctx2, {
+    type: "line",
+    data: {
+      labels: ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"],
+      datasets: [
+        {
+          label: "Total Jam Aktivitas",
+          data: [3, 4, 5, 4, 6, 2, 5],
+          borderColor: "#1B9CFC",
+          backgroundColor: "rgba(27,156,252,0.2)",
+          fill: true,
+          tension: 0.3,
+          pointRadius: 5,
+          pointBackgroundColor: "#1B9CFC"
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>

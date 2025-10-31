@@ -1,0 +1,155 @@
+<section class="daftar-aktivitas">
+  <div class="daftar-header">
+    <h2>Daftar Aktivitas</h2>
+    <p>Lihat, ubah, atau hapus aktivitasmu di sini.</p>
+  </div>
+
+  <!-- Filter Section -->
+  <div class="filter-section">
+    <label for="filterKategori">Filter Kategori:</label>
+    <select id="filterKategori">
+      <option value="all">Semua</option>
+      <option value="Belajar">Belajar</option>
+      <option value="Olahraga">Olahraga</option>
+      <option value="Proyek">Proyek</option>
+      <option value="Hiburan">Hiburan</option>
+      <option value="Istirahat">Istirahat</option>
+    </select>
+
+    <label for="filterTanggal">Filter Tanggal:</label>
+    <input type="date" id="filterTanggal">
+    <button id="btnFilter">Terapkan</button>
+  </div>
+
+  <!-- Tabel Aktivitas -->
+  <div class="table-container">
+    <table class="activity-table">
+      <thead>
+        <tr>
+          <th>Aktivitas</th>
+          <th>Kategori</th>
+          <th>Tanggal</th>
+          <th>Durasi</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Coding Modul UI</td>
+          <td>Proyek</td>
+          <td>20 Okt 2025</td>
+          <td>3 jam</td>
+          <td class="aksi">
+            <button class="btn-edit">
+              <ion-icon name="create-outline"></ion-icon>
+            </button>
+            <button class="btn-delete">
+              <ion-icon name="trash-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Coding Modul UI</td>
+          <td>Proyek</td>
+          <td>20 Okt 2025</td>
+          <td>3 jam</td>
+          <td class="aksi">
+            <button class="btn-edit">
+              <ion-icon name="create-outline"></ion-icon>
+            </button>
+            <button class="btn-delete">
+              <ion-icon name="trash-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Coding Modul UI</td>
+          <td>Proyek</td>
+          <td>20 Okt 2025</td>
+          <td>3 jam</td>
+          <td class="aksi">
+            <button class="btn-edit">
+              <ion-icon name="create-outline"></ion-icon>
+            </button>
+            <button class="btn-delete">
+              <ion-icon name="trash-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Coding Modul UI</td>
+          <td>Proyek</td>
+          <td>20 Okt 2025</td>
+          <td>3 jam</td>
+          <td class="aksi">
+            <button class="btn-edit">
+              <ion-icon name="create-outline"></ion-icon>
+            </button>
+            <button class="btn-delete">
+              <ion-icon name="trash-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Coding Modul UI</td>
+          <td>Proyek</td>
+          <td>20 Okt 2025</td>
+          <td>3 jam</td>
+          <td class="aksi">
+            <button class="btn-edit">
+              <ion-icon name="create-outline"></ion-icon>
+            </button>
+            <button class="btn-delete">
+              <ion-icon name="trash-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Coding Modul UI</td>
+          <td>Proyek</td>
+          <td>20 Okt 2025</td>
+          <td>3 jam</td>
+          <td class="aksi">
+            <button class="btn-edit">
+              <ion-icon name="create-outline"></ion-icon>
+            </button>
+            <button class="btn-delete">
+              <ion-icon name="trash-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Jogging Pagi</td>
+          <td>Olahraga</td>
+          <td>25 Okt 2025</td>
+          <td>45 menit</td>
+          <td class="aksi">
+            <button class="btn-edit">
+              <ion-icon name="create-outline"></ion-icon>
+            </button>
+            <button class="btn-delete">
+              <ion-icon name="trash-outline"></ion-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Note -->
+  <p class="note">
+    Gunakan tombol 
+    <ion-icon name="create-outline"></ion-icon> untuk mengedit dan 
+    <ion-icon name="trash-outline"></ion-icon> untuk menghapus aktivitas.
+  </p>
+
+  <!-- Ionicons (agar tetap aktif ketika dimuat dinamis) -->
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+  ></script>
+</section>

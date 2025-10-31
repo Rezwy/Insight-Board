@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Aktivitas | InsightBoard</title>
+
+  <!-- My Style -->
+  <link rel="stylesheet" href="../assets/css/tambah-aktivitas.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="main-content">
+    <header class="header">
+      <h2>Tambah Aktivitas Harian</h2>
+      <p>Isi aktivitas yang kamu lakukan hari ini dan pantau produktivitasmu dari waktu ke waktu.</p>
+    </header>
+
+    <!-- Notifikasi -->
+    <div id="alert-box" class="alert hidden"></div>
+
+    <section class="form-section">
+      <form id="activity-form" class="activity-card">
+        
+        <!-- Kategori -->
+        <label for="kategori">🏷️ Kategori Aktivitas</label>
+        <select id="kategori" required>
+          <option value="">-- Pilih Kategori --</option>
+          <option value="Belajar">Belajar</option>
+          <option value="Olahraga">Olahraga</option>
+          <option value="Konsumsi">Konsumsi</option>
+          <option value="Proyek">Proyek</option>
+          <option value="Hiburan">Hiburan</option>
+          <option value="Istirahat">Istirahat</option>
+        </select>
+
+        <!-- Subkategori -->
+        <label for="subkategori">🔖 Subkategori Aktivitas</label>
+        <select id="subkategori" required>
+          <option value="">-- Pilih Subkategori --</option>
+        </select>
+
+        <!-- Tanggal -->
+        <label for="tanggal">📅 Tanggal Aktivitas</label>
+        <input type="date" id="tanggal" required>
+
+        <!-- Waktu -->
+        <label for="waktu">🕒 Waktu Aktivitas</label>
+        <input type="time" id="waktu" required>
+
+        <!-- Durasi -->
+        <label for="durasi">⏱️ Durasi (menit)</label>
+        <input type="number" id="durasi" placeholder="contoh: 60" required>
+
+        <!-- Catatan -->
+        <label for="catatan">🗒️ Catatan Tambahan</label>
+        <textarea id="catatan" placeholder="Opsional..."></textarea>
+
+        <!-- Tombol -->
+        <div class="form-buttons">
+          <button type="submit" class="btn-primary">Simpan Aktivitas</button>
+          <button type="reset" class="btn-secondary">Bersihkan Form</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    // Auto isi tanggal hari ini
+    document.getElementById('tanggal').valueAsDate = new Date();
+
+    // Dropdown dinamis
+    const subkategoriMap = {
+      Belajar: ['Membaca Buku', 'Kelas Online', 'Diskusi Grup'],
+      Olahraga: ['Jogging', 'Gym', 'Yoga'],
+      Konsumsi: ['Makan Pagi', 'Makan Siang', 'Makan Malam'],
+      Proyek: ['Meeting', 'Coding', 'Presentasi'],
+      Hiburan: ['Menonton Film', 'Bermain Game', 'Mendengarkan Musik'],
+      Istirahat: ['Tidur Siang', 'Tidur Malam']
+    };
+
+    const kategoriSelect = document.getElementById('kategori');
+    const subkategoriSelect = document.getElementById('subkategori');
+
+    kategoriSelect.addEventListener('change', () => {
+      const kategori = kategoriSelect.value;
+      subkategoriSelect.innerHTML = '<option value="">-- Pilih Subkategori --</option>';
+      if (subkategoriMap[kategori]) {
+        subkategoriMap[kategori].forEach(sub => {
+          const opt = document.createElement('option');
+          opt.value = sub;
+          opt.textContent = sub;
+          subkategoriSelect.appendChild(opt);
+        });
+      }
+    });
+
+    // Validasi dan alert sukses/gagal
+    const form = document.getElementById('activity-form');
+    const alertBox = document.getElementById('alert-box');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        showAlert('⚠️ Harap lengkapi semua data sebelum menyimpan.', 'error');
+      } else {
+        showAlert('✅ Aktivitas berhasil disimpan!', 'success');
+        setTimeout(() => {
+          window.location.href = "daftarAktivitas.html"; // redirect ke daftar
+        }, 2000);
+      }
+    });
+
+    function showAlert(message, type) {
+      alertBox.textContent = message;
+      alertBox.className = 'alert ' + type;
+      setTimeout(() => {
+        alertBox.classList.add('hidden');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

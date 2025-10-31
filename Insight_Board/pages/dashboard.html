@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard User</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Style -->
+  <link rel="stylesheet" href="../assets/css/style-dashboard.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2 class="logo">InsightBoard</h2>
+      <nav>
+        <ul>
+          <li class="active" data-page="dashboard">
+            <ion-icon name="home-outline"></ion-icon>
+            <span>Dashboard</span>
+          </li>
+          <li>
+            <a href="tambah-aktivitas.html" class="no-dynamic">
+              <ion-icon name="add-circle-outline"></ion-icon>
+              <span>Tambah Aktivitas</span>
+            </a>
+          </li>
+          <li data-page="daftar-aktivitas">
+            <ion-icon name="list-outline"></ion-icon>
+            <span>Daftar Aktivitas</span>
+          </li>
+          <li data-page="lihat-insight">
+            <ion-icon name="bar-chart-outline"></ion-icon>
+            <span>Lihat Insight</span>
+          </li>
+          <li data-page="pengaturan-akun">
+            <ion-icon name="settings-outline"></ion-icon>
+            <span>Pengaturan Akun</span>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="logout-section">
+        <li class="logout">
+          <ion-icon name="log-out-outline"></ion-icon>
+          <a href="login.html" class="login-link">Logout</a>
+        </li>
+        <p class="version">Versi 1.0 – Agile Based Project</p>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <input
+          type="text"
+          placeholder="Cari aktivitas, sprint, atau anggota tim..."
+        />
+        <div class="profile">
+          <span class="search"
+            ><ion-icon name="search-outline"></ion-icon
+          ></span>
+          <span class="icon"
+            ><ion-icon name="notifications-outline"></ion-icon
+          ></span>
+          <span class="avatar"
+            ><ion-icon name="person-outline"></ion-icon
+          ></span>
+          <span class="username">Halo, Tuanku!</span>
+
+          <div class="auth-links">
+            <a href="login.html" class="login-link">Login</a>
+            <a href="register.html" class="register-link">Register</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- AREA YANG DIGANTI -->
+      <section id="page-content">
+        <!-- Quick Stats -->
+        <section class="quick-stats">
+          <div class="card blue">
+            <h3>Sprint-Active</h3>
+            <p>Sprint 3 – On Progress (60%)</p>
+          </div>
+
+          <div class="card green">
+            <h3>Tugas Selesai</h3>
+            <p>25 dari 40 task selesai</p>
+          </div>
+
+          <div class="card yellow">
+            <h3>Estimasi Waktu</h3>
+            <p>5 Hari lagi menuju deadline</p>
+          </div>
+
+          <div class="card red">
+            <h3>Risiko Aktif</h3>
+            <p>Risiko sedang dipantau</p>
+          </div>
+        </section>
+
+        <!-- Chart Section -->
+        <section class="charts">
+          <div class="chart-card">
+            <h3>Burn-down Card</h3>
+            <canvas id="burndown-card"></canvas>
+          </div>
+          <div class="chart-card">
+            <h3>Productivity Trend</h3>
+            <canvas id="productivityChart"></canvas>
+            <p class="insight">
+              Produktivitas tim meningkat 12% dari minggu lalu.
+            </p>
+          </div>
+        </section>
+      </section>
+      <!-- ======================= -->
+    </main>
+  </div>
+
+    <script>
+    // === SISTEM THEME GLOBAL ===
+    const applyTheme = (theme) => {
+      document.body.dataset.theme = theme;
+
+      // Simpan di localStorage agar tetap tersimpan
+      localStorage.setItem("theme", theme);
+    };
+
+    // Terapkan tema tersimpan saat load halaman
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      applyTheme(savedTheme);
+    });
+
+    // Tangkap event dari input radio di halaman pengaturan-akun
+    document.addEventListener("change", (e) => {
+      if (e.target.name === "theme") {
+        applyTheme(e.target.value);
+      }
+    });
+  </script>
+
+  <!-- Ionicons -->
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+  ></script>
+
+  <!-- Script loader -->
+  <script src="../assets/js/script.js"></script>
+</body>
+</html>
